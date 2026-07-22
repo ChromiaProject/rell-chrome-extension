@@ -1,0 +1,26 @@
+image: oven/bun:1
+
+stages:
+  - test
+  - build
+
+test:
+  stage: test
+  script:
+    - bun install --frozen-lockfile
+    - bun run typecheck
+    - bun test
+
+build:
+  stage: build
+  script:
+    - bun install --frozen-lockfile
+    - bun run build
+    - apt-get update -qq && apt-get install -y -qq zip
+    - cd extension-unpacked && zip -r ../rell-github-highlighting.zip . && cd ..
+  artifacts:
+    name: "rell-github-highlighting-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - rell-github-highlighting.zip
+    expose_as: "Chrome extension zip"
+    expire_in: 30 days
