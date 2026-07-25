@@ -2,6 +2,8 @@
 
 A Chrome extension (Manifest V3, Bun + TypeScript) that adds [Rell](https://docs.chromia.com/rell) syntax highlighting on github.com, gitlab.com, and bitbucket.org, where the language is not natively supported.
 
+**[➜ Install from the Chrome Web Store](https://chromewebstore.google.com/detail/pffphipdgoiknoegflinddleeiffiali)**
+
 ![A .rell file on GitHub with syntax highlighting applied by the extension](docs/screenshot.png)
 
 It highlights:
@@ -17,9 +19,11 @@ Self-hosted GitLab/Bitbucket instances are not matched by default; add your host
 
 The tokenizer (`src/rell.ts`) is hand-derived from the ANTLR grammar at `rell3/rell-base/frontend/src/main/antlr/Rell.g4`: keywords, `true`/`false`/`null`, integers, hex, big integers (`L`), decimals, strings, bytes literals (`x"…"`/`x'…'`), line and multi-line comments, `@annotations`, and definition names.
 
-## Download
+## Install
 
-The latest build from `master` is available as a CI artifact: [rell-github-highlighting.zip](https://gitlab.com/chromaway/rell-chrome-extension/-/jobs/artifacts/master/download?job=build). Extract it and load the folder as described in [Install in Chrome](#install-in-chrome).
+The released extension is on the Chrome Web Store: **[Rell Syntax Highlighting](https://chromewebstore.google.com/detail/pffphipdgoiknoegflinddleeiffiali)**.
+
+To run the latest `master` instead, download the CI artifact [rell-github-highlighting.zip](https://gitlab.com/chromaway/rell-chrome-extension/-/jobs/artifacts/master/download?job=build), extract it, and load the folder as described in [Load unpacked](#load-unpacked).
 
 ## Build
 
@@ -28,7 +32,7 @@ bun install
 bun run build    # bundles to extension-unpacked/ (gitignored)
 ```
 
-## Install in Chrome
+## Load unpacked
 
 1. Open `chrome://extensions`.
 2. Enable **Developer mode**.
